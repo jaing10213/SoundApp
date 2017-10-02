@@ -1,65 +1,66 @@
-<div class="container-fluid">
+  <div class="d-block bg-warning font-weight-bold text-center p-2">
+    <h1>Mini-Mate3 Sound Calculator</h1>
+  </div>
+  <div class="container-fluid">
+
   <br>
-  <div class="card" style="background:transparent">
-    <div class="card-header">
-      <h4 class="text-center">Inputs</h4>      
-    </div>
-    <div class="card-body">
+  <div >
+     
       <div class="row">
         <div class="col-sm-6">
-          <label class="col-form-label" for="productFamilyDropDown">Product Family</label>
+          <label class="col-form-label  text-muted" for="productFamilyDropDown">Product Family</label>
           <select class="form-control" id="productFamilyDropDown" [(ngModel)] = "selectedFamily" 
           (change) = "productFamilyChanged()">
             <option >--Select Product Family--</option>
             <option *ngFor='let family of families' [value] = family.Key
             >
-              {{family.Value}} - {{family.Key}}
+              {{family.Value}}
           </select>
         </div>
 
         <div class="col-sm-6">
-          <label class="col-form-label" for="unitModelDropDown" *ngIf="units.length>0">Model Number</label>
+          <label class="col-form-label text-muted" for="unitModelDropDown" *ngIf="units.length>0">Model Number</label>
           <select class="form-control" id="unitModelDropDown" [(ngModel)] = "selectedUnit" *ngIf="units.length>0"
           (change) = "unitModelChanged()">
             <option value="0" >--Select Model Number--</option>
             <option *ngFor='let unit of units' [value] = unit.Key >
-              {{unit.Value}} - {{unit.Key}}
+              {{unit.Value}}
           </select>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6" >
-          <label class="col-form-label" for="airInletDropDown"  *ngIf="airInlets.length>0">Air Inlet</label>
+          <label class="col-form-label text-muted" for="airInletDropDown"  *ngIf="airInlets.length>0">Air Inlet</label>
           <select class="form-control" id="airInletDropDown" [(ngModel)] = "selectedAirInlet" 
           (change) = "airInletChanged()" *ngIf="airInlets.length>0">
             <option value="0" >--Select Air Inlet--</option>
             <option *ngFor='let inlet of airInlets' [value] = inlet.Key
             >
-              {{inlet.Value}} - {{inlet.Key}}
+              {{inlet.Value}}
           </select>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 text-muted">
           <label class="col-form-label" for="airOutletDropDown" *ngIf="airOutlets.length>0">Air Outlet</label>
           <select class="form-control" id="airOutletDropDown"  [(ngModel)] = "selectedAirOutlet" 
            (change) = "airOutletsChanged()" *ngIf="airOutlets.length>0">
             <option value="0" >--Select Air Outlet--</option>
             <option *ngFor='let outlet of airOutlets' [value] = outlet.Key >
-              {{outlet.Value}} - {{outlet.Key}}
+              {{outlet.Value}}
           </select>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-6" >
+        <div class="col-sm-6 text-muted" >
           <label class="col-form-label" for="acfmInput"  *ngIf="selectedAirOutlet>0">ACFM</label>
           <input class="form-control" id="acfmInput" [(ngModel)] = "inpAcfm" 
           *ngIf="selectedAirOutlet>0">         
          
         </div>
 
-        <div class="col-sm-6" >
+        <div class="col-sm-6 text-muted" >
           <label class="col-form-label" for="tspInput"  *ngIf="selectedAirOutlet>0">TSP [in-H2O]</label>
           <input class="form-control" id="tspInput" [(ngModel)] = "inpTsp" 
           *ngIf="selectedAirOutlet>0">         
@@ -67,19 +68,22 @@
         </div>
       </div>
 
-    </div>
+<br>
 
-      <div class="card-footer">
+
+  
         <div class="row">
+          <div class="col-sm-1">
           <input type="button" (click)="calculateSound()" 
           [disabled] = "!(selectedFamily > 0 && selectedUnit > 0 && selectedAirInlet > 0 && selectedAirOutlet > 0
-          && inpAcfm >0 && inpTsp >=0)"  class="form-control col-sm-1 btn btn-outline-primary" value="Calculate">
+          && inpAcfm >0 && inpTsp >=0)"  class="form-control  btn btn-outline-primary" value="Calculate">
         </div>
-      </div>
+        </div>
+   
 
   </div>
 
-<br>
+<hr>
 
 <div  >
       <sound-result [soundData]="soundResults"></sound-result>

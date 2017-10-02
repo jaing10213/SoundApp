@@ -25,8 +25,8 @@ export class SoundCalculatorComponent implements OnInit {
   selectedAirInlet: number;
   selectedAirOutlet: number;
 
-inpAcfm: number = 2700;
-inpTsp: number = 2.8;
+inpAcfm: number;
+inpTsp: number;
 
 soundResults: {Key: string, Value: SoundResult}[];
 
