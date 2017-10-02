@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sound-calculator',
+  selector: 'sound-calculator',
   templateUrl: './sound-calculator.component.html',
   styleUrls: ['./sound-calculator.component.css']
 })
