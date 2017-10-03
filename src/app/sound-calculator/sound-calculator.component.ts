@@ -45,7 +45,7 @@ airInletChanged(): void {
   this.getAirOulets(this.selectedUnit, this.selectedAirInlet);
 }
 
-private airOutletChanged(): void {
+airOutletChanged(): void {
   this.soundResults = [];  
 }
 

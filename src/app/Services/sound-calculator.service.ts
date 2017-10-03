@@ -9,7 +9,8 @@ export class SoundCalculatorService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl: string = "http://localhost:55276/api"
+ // private baseUrl: string = "http://localhost:55276/api"
+  private baseUrl: string = "http://dev.lrs.liebert.com/soundcalculatorapi/api"
 
   GetProductFamilies(): Observable<{Key: number, Value: string}[]> {
     let endUrl = "family/all"
