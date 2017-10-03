@@ -3,22 +3,23 @@
     <table class="table table-hover table-responsive">
       <thead class="thead-inverse">
           <tr>
-          <th>Frequency [Hz]</th>
-          <th>65</th>
-          <th>125</th>
-          <th>250</th>
-          <th>500</th>
-          <th>1000</th>
-          <th>2000</th>
-          <th>4000</th>
-          <th>8000</th> 
-          <th>dBA</th> 
-          <th>dBL</th> 
+          <th>Frequency [Hz] <i class="fa fa-long-arrow-right" ></i> <br>
+          Sound Path <i class="fa fa-long-arrow-down" ></i></th>
+          <th class="align-middle">65</th>
+          <th class="align-middle">125</th>
+          <th class="align-middle">250</th>
+          <th class="align-middle">500</th>
+          <th class="align-middle">1000</th>
+          <th class="align-middle">2000</th>
+          <th class="align-middle">4000</th>
+          <th class="align-middle">8000</th> 
+          <th class="align-middle">dBA</th> 
+          <th class="align-middle">dBL</th> 
         </tr> 
       </thead>
       <tbody>
         <tr *ngFor='let sound of soundData'>
-          <td>{{sound.Key}}</td>
+          <td>{{getSoundPathValue(sound.Key)}} [dB]</td>
           <td>{{sound.Value.db63 | number:'.1-1' }} </td>
           <td>{{sound.Value.db125 | number:'.1-1' }}</td>
           <td>{{sound.Value.db250 | number:'.1-1' }}</td>

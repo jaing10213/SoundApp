@@ -37,6 +37,12 @@ export class SoundCalculatorService {
     return this.http.get<{Key:number, Value:string}[]>(url);
   }
 
+  GetSoundPaths(): Observable<{Key:number, Value:string}[]>{
+    let endUrl = "UnitSound/soundpath/all"
+    let url = `${this.baseUrl}/${endUrl}`
+    return this.http.get<{Key:number, Value:string}[]>(url);
+  }
+
   CalculateSound(unitId: number, aInlet: number, aOutlet: number, acfm: number, tsp: number): Observable <{Key: string, Value: SoundResult}[]>{
     let endUrl = "UnitSound/calculate"
     let url = `${this.baseUrl}/${endUrl}/${unitId}/${aInlet}/${aOutlet}/${acfm}/${tsp}/`

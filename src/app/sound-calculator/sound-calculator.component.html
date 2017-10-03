@@ -1,5 +1,5 @@
   <div class="d-block bg-warning font-weight-bold text-center p-2">
-    <h1>Mini-Mate3 Sound Calculator</h1>
+    <h1>Mini-Mate3 Sound Calculator <i class="fa fa-volume-up" aria-hidden="true"></i></h1>
   </div>
   <div class="container-fluid">
 
@@ -19,8 +19,8 @@
         </div>
 
         <div class="col-sm-6">
-          <label class="col-form-label text-muted" for="unitModelDropDown" *ngIf="units.length>0">Model Number</label>
-          <select class="form-control" id="unitModelDropDown" [(ngModel)] = "selectedUnit" *ngIf="units.length>0"
+          <label class="col-form-label text-muted" for="unitModelDropDown" >Model Number</label>
+          <select class="form-control" id="unitModelDropDown" [(ngModel)] = "selectedUnit" [disabled]="!units.length>0"
           (change) = "unitModelChanged()">
             <option value="0" >--Select Model Number--</option>
             <option *ngFor='let unit of units' [value] = unit.Key >
@@ -31,9 +31,9 @@
 
       <div class="row">
         <div class="col-sm-6" >
-          <label class="col-form-label text-muted" for="airInletDropDown"  *ngIf="airInlets.length>0">Air Inlet</label>
+          <label class="col-form-label text-muted" for="airInletDropDown"  >Air Inlet</label>
           <select class="form-control" id="airInletDropDown" [(ngModel)] = "selectedAirInlet" 
-          (change) = "airInletChanged()" *ngIf="airInlets.length>0">
+          (change) = "airInletChanged()" [disabled]="!airInlets.length>0">
             <option value="0" >--Select Air Inlet--</option>
             <option *ngFor='let inlet of airInlets' [value] = inlet.Key
             >
@@ -42,9 +42,9 @@
         </div>
 
         <div class="col-sm-6 text-muted">
-          <label class="col-form-label" for="airOutletDropDown" *ngIf="airOutlets.length>0">Air Outlet</label>
+          <label class="col-form-label" for="airOutletDropDown" >Air Outlet</label>
           <select class="form-control" id="airOutletDropDown"  [(ngModel)] = "selectedAirOutlet" 
-           (change) = "airOutletsChanged()" *ngIf="airOutlets.length>0">
+           (change) = "airOutletChanged()"  [disabled]="!airOutlets.length>0">
             <option value="0" >--Select Air Outlet--</option>
             <option *ngFor='let outlet of airOutlets' [value] = outlet.Key >
               {{outlet.Value}}
@@ -54,16 +54,16 @@
 
       <div class="row">
         <div class="col-sm-6 text-muted" >
-          <label class="col-form-label" for="acfmInput"  *ngIf="selectedAirOutlet>0">ACFM</label>
+          <label class="col-form-label" for="acfmInput"  >ACFM</label>
           <input class="form-control" id="acfmInput" [(ngModel)] = "inpAcfm" 
-          *ngIf="selectedAirOutlet>0">         
+         >         
          
         </div>
 
         <div class="col-sm-6 text-muted" >
-          <label class="col-form-label" for="tspInput"  *ngIf="selectedAirOutlet>0">TSP [in-H2O]</label>
+          <label class="col-form-label" for="tspInput" >TSP [in-H2O]</label>
           <input class="form-control" id="tspInput" [(ngModel)] = "inpTsp" 
-          *ngIf="selectedAirOutlet>0">         
+         >         
          
         </div>
       </div>
@@ -73,9 +73,9 @@
 
   
         <div class="row">
-          <div class="col-sm-1">
+          <div class="col-sm-2">
           <input type="button" (click)="calculateSound()" 
-          [disabled] = "!(selectedFamily > 0 && selectedUnit > 0 && selectedAirInlet > 0 && selectedAirOutlet > 0
+          *ngIf= "(selectedFamily > 0 && selectedUnit > 0 && selectedAirInlet > 0 && selectedAirOutlet > 0
           && inpAcfm >0 && inpTsp >=0)"  class="form-control  btn btn-outline-primary" value="Calculate">
         </div>
         </div>
@@ -86,7 +86,8 @@
 <hr>
 
 <div  >
-      <sound-result [soundData]="soundResults"></sound-result>
+      <sound-result [soundData]="soundResults" [soundPaths] = "soundPaths"></sound-result>
 </div>
 
+<hr>
 </div>

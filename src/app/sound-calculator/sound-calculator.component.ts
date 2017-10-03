@@ -19,6 +19,8 @@ export class SoundCalculatorComponent implements OnInit {
   units: {Key: number, Value: string}[] = [];
   airInlets: {Key: number, Value: string}[] = [];
   airOutlets: {Key: number, Value: string}[] = [];
+  soundPaths: {Key: number, Value: string}[] = [];
+  
 
   selectedFamily: number;
   selectedUnit: number ;
@@ -42,6 +44,11 @@ unitModelChanged(){
 airInletChanged(): void {
   this.getAirOulets(this.selectedUnit, this.selectedAirInlet);
 }
+
+private airOutletChanged(): void {
+  this.soundResults = [];  
+}
+
 
 private getModelNumbers(familyId: number): void{
   this.units = [];
@@ -93,9 +100,7 @@ private getAirOulets(unitId: number, airInletId): void{
   }
 }
 
-private airOutletsChanged(): void {
-  this.soundResults = [];  
-}
+
 
 calculateSound(): void{
   console.log("Calculating");
@@ -108,7 +113,10 @@ calculateSound(): void{
     .subscribe(
       (res => {this.families = res })
       );
-      
+      this._soundService.GetSoundPaths()
+      .subscribe(
+        (res => {this.soundPaths = res;})
+      )
   }
 
 }
