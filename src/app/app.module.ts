@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MdSelectModule, MdToolbarModule, MdButtonModule, MdInputModule} from '@angular/material';
 
 import {HttpClientModule} from '@angular/common/http';
 
@@ -19,7 +22,12 @@ import { SoundResultComponent } from './sound-result/sound-result.component'
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MdSelectModule,
+    MdToolbarModule,
+    MdButtonModule,
+    MdInputModule
   ],
   providers: [SoundCalculatorService],
   bootstrap: [AppComponent]

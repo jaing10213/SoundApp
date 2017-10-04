@@ -1,6 +1,12 @@
-  <div class="d-block bg-warning font-weight-bold text-center p-2">
+ <md-toolbar color="primary">
+   <span class="text-center"><h1 class="mat-display-1">Mini-Mate3 Sound Calculator</h1> </span> 
+   <span class="spacer"></span>
+   <span  mdTooltip="gaurav.jain@vertivco.com">About</span>
+ </md-toolbar>
+ 
+  <!--<div class="d-block bg-warning font-weight-bold text-center p-2">
     <h1>Mini-Mate3 Sound Calculator <i class="fa fa-volume-up" aria-hidden="true"></i></h1>
-  </div>
+  </div>-->
   <div class="container-fluid">
 
   <br>
@@ -8,62 +14,55 @@
      
       <div class="row">
         <div class="col-sm-6">
-          <label class="col-form-label  text-muted" for="productFamilyDropDown">Product Family</label>
-          <select class="form-control" id="productFamilyDropDown" [(ngModel)] = "selectedFamily" 
-          (change) = "productFamilyChanged()">
-            <option >--Select Product Family--</option>
-            <option *ngFor='let family of families' [value] = family.Key
-            >
-              {{family.Value}}
-          </select>
+          <md-select placeholder="Product Family" id="productFamilyDropDown" [(ngModel)] = "selectedFamily" 
+          (change) = "productFamilyChanged()" class="full-width" >
+
+
+            <md-option *ngFor='let family of families' [value] = family.Key>
+              {{family.Value}}</md-option>
+          </md-select>
         </div>
 
         <div class="col-sm-6">
-          <label class="col-form-label text-muted" for="unitModelDropDown" >Model Number</label>
-          <select class="form-control" id="unitModelDropDown" [(ngModel)] = "selectedUnit" [disabled]="!(units.length>0)"
-          (change) = "unitModelChanged()">
-            <option value="0" >--Select Model Number--</option>
-            <option *ngFor='let unit of units' [value] = unit.Key>
-              {{unit.Value}}
-          </select>
+          <md-select placeholder="Model Number" id="unitModelDropDown" [(ngModel)] = "selectedUnit" [disabled]="!(units.length>0)"
+          (change) = "unitModelChanged()"  class="full-width" >
+            <md-option  *ngFor='let unit of units' [value] = unit.Key>
+              {{unit.Value}} </md-option>
+          </md-select>
         </div>
       </div>
-
+<br>
       <div class="row">
         <div class="col-sm-6" >
-          <label class="col-form-label text-muted" for="airInletDropDown"  >Air Inlet</label>
-          <select class="form-control" id="airInletDropDown" [(ngModel)] = "selectedAirInlet" 
-          (change) = "airInletChanged()" [disabled]="!(airInlets.length>0)">
-            <option value="0" >--Select Air Inlet--</option>
-            <option *ngFor='let inlet of airInlets' [value] = inlet.Key>
-              {{inlet.Value}}
-          </select>
+          <md-select placeholder="Air Inlet" id="airInletDropDown" [(ngModel)] = "selectedAirInlet" 
+          (change) = "airInletChanged()" [disabled]="!(airInlets.length>0)"  class="full-width" >
+            <md-option *ngFor='let inlet of airInlets' [value] = inlet.Key>
+              {{inlet.Value}}</md-option>
+          </md-select>
         </div>
 
         <div class="col-sm-6 text-muted">
-          <label class="col-form-label" for="airOutletDropDown" >Air Outlet</label>
-          <select class="form-control" id="airOutletDropDown"  [(ngModel)] = "selectedAirOutlet" 
-           (change) = "airOutletChanged()"  [disabled]="!(airOutlets.length>0)">
-            <option value="0" >--Select Air Outlet--</option>
-            <option *ngFor='let outlet of airOutlets' [value] = outlet.Key >
-              {{outlet.Value}}
-          </select>
+          <md-select placeholder="Air Outlet" id="airOutletDropDown"  [(ngModel)] = "selectedAirOutlet" 
+           (change) = "airOutletChanged()"  [disabled]="!(airOutlets.length>0)"  class="full-width" >
+            <md-option *ngFor='let outlet of airOutlets' [value] = outlet.Key >
+              {{outlet.Value}}</md-option>
+          </md-select>
         </div>
       </div>
-
+<br>
       <div class="row">
-        <div class="col-sm-6 text-muted" >
-          <label class="col-form-label" for="acfmInput"  >ACFM</label>
-          <input class="form-control" id="acfmInput" [(ngModel)] = "inpAcfm" 
-         >         
+        <div class="col-sm-6 " >
+          <md-form-field class="full-width">
+          <input mdInput placeholder="ACFM" class="form-control" class="full-width"  id="acfmInput" 
+          [(ngModel)] = "inpAcfm" > 
+          </md-form-field>        
          
         </div>
 
-        <div class="col-sm-6 text-muted" >
-          <label class="col-form-label" for="tspInput" >TSP [in-H2O]</label>
-          <input class="form-control" id="tspInput" [(ngModel)] = "inpTsp" 
-         >         
-         
+        <div class="col-sm-6 " >
+          <md-form-field class="full-width">
+            <input mdInput placeholder="Total Static Pressure [in-H2O]" class="full-width" id="tspInput" [(ngModel)] = "inpTsp">         
+          </md-form-field>
         </div>
       </div>
 
@@ -73,12 +72,12 @@
   
         <div class="row">
           <div class="col-sm-2">
-          <input type="button" (click)="calculateSound()" 
+          <button md-raised-button color="accent" (click)="calculateSound()" 
           *ngIf= "(selectedFamily > 0 && selectedUnit > 0 && selectedAirInlet > 0 && selectedAirOutlet > 0)"  
-          class="form-control  btn btn-outline-primary" value="Calculate">
+          >Calculate </button>
         </div>
         </div>
-   
+        
 
   </div>
 

@@ -109,6 +109,7 @@ calculateSound(): void{
 }
 
   ngOnInit() {
+
     this._soundService.GetProductFamilies()
     .subscribe(
       (res => {this.families = res })
