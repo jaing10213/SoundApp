@@ -13,7 +13,11 @@ import {SoundResult} from '../objects/SoundResult'
 })
 export class SoundCalculatorComponent implements OnInit {
 
-  constructor(private _soundService: SoundCalculatorService) { }
+  constructor(private _soundService: SoundCalculatorService) { 
+    this.fullLogoPath= "assets/images/VertivLogo_full.png"
+  }
+
+fullLogoPath: string ="";
 
   families: {Key: number, Value: string}[] = [];
   units: {Key: number, Value: string}[] = [];

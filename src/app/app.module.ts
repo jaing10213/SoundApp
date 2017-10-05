@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MdSelectModule, MdToolbarModule, MdButtonModule, MdInputModule} from '@angular/material';
+import {MdSelectModule, MdToolbarModule, MdButtonModule, MdInputModule, MdTooltipModule} from '@angular/material';
 
 import {HttpClientModule} from '@angular/common/http';
 
@@ -27,7 +27,8 @@ import { SoundResultComponent } from './sound-result/sound-result.component'
     MdSelectModule,
     MdToolbarModule,
     MdButtonModule,
-    MdInputModule
+    MdInputModule,
+    MdTooltipModule
   ],
   providers: [SoundCalculatorService],
   bootstrap: [AppComponent]
